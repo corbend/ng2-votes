@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+	<div class="panel panel-info">
+		<div class="panel-heading">Results of quiz: {{poll.name}}</div>
+		<div class="panel-body">
+			<h1>People vote: {{poll.votes}}</h1>
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor="#question of poll.questions">
+					<div class="well">{{question.text}}<span class="badge">{{question.count}}</span></div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-success progress-bar-striped" 
+					  	role="progressbar"
+					  	aria-valuemin="0" 
+					  	aria-valuemax="100" [ngStyle]="{'width': (question.results || 0) + '%'}">
+					    {{question.results || 0}}%
+					  </div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-primary" (click)="cancel()">Cancel</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row">
+		<div class="panel panel-info">
+			<div class="panel-heading">Create new quiz</div>
+			<div class="panel-body container">
+				<form class="col-md-12 form-horizontal">
+					<div class="form-group">
+						<label for="name">Name</label>
+						<input class="form-control" id="name" name="name" [(ngModel)]="newQuiz.name">
+					</div>
+					<div class="form-group">
+						<label for="tag">Tag (description) </label>
+						<input class="form-control" id="tag" name="tag" [(ngModel)]="newQuiz.tag">
+					</div>
+					<div class="form-group">
+						<label for="fromDate">Date of start</label>
+						<input class="form-control" id="fromDate" name="fromDate" [(ngModel)]="newQuiz.fromDate">
+					</div>
+					<div class="form-group">
+						<label for="toDate">Date of end</label>
+						<input class="form-control" id="toDate" name="toDate" [(ngModel)]="newQuiz.toDate">
+					</div>
+				</form>
+				<form class="col-md-12 form-inline well">
+					<div class="form-group">
+						<label for="text">Create question</label>
+						<input class="form-control" id="text" name="text" [(ngModel)]="newQuestion.text">
+					</div>
+					<button class="btn btn-success" (click)="addQuestion(newQuestion)">Add</button>
+				</form>
+				<div class="row"><div class="col-md-12">
+					<ol class="list-group">
+						<li class="list-group-item" *ngFor="#question of newQuiz.questions">
+							<span class="col-md-10 text-label">{{question.text}}</span>
+							<button class="btn btn-danger" (click)="removeQuestion(question)">Remove</button>
+						</li>
+					</ol>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button class="btn btn-default" (click)="create(newQuiz)">Create</button>
+				<button class="btn btn-primary" (click)="cancel()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="panel panel-info">
+			<div class="panel-heading">{{sessionQuiz.name}}</div>
+			<div class="panel-body">
+				<div class="container">
+					<ul class="col-md-12 list-group">
+						<li class="list-group-item" *ngFor="#question of questions">
+							<input type="checkbox" 
+							[(ngModel)]="question.selected">
+							{{question.text}}
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button class="btn btn-success" (click)="vote()">Vote</button>
+				<button class="btn btn-primary" (click)="cancel()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

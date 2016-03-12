@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1>Welcome to Poll Manager</h1>
+	</div>
+	<div class="row">
+		<ul class="list-group">
+			<li class="list-group-item" *ngFor="#poll of polls | async">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-9">
+							<div class="well">{{poll.name}} <span class="badge">{{poll.votes}}</span></div>
+							<div class="label label-success"> Started: {{pollsTimers[poll.$$fbKey] && pollsTimers[poll.$$fbKey].fromDateFormatted}}</div>
+							<div class="label label-warning"> End at: {{pollsTimers[poll.$$fbKey] && pollsTimers[poll.$$fbKey].toDateFormatted}}</div>
+							<div class="label label-danger">
+								<span *ngIf="!poll.ended">Left to close: </span>
+								<span *ngIf="poll.ended">Finished</span>
+								{{pollsTimers[poll.$$fbKey] && pollsTimers[poll.$$fbKey].timeRemainingAll}}
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<button class="btn btn-success" (click)="start(poll)">Take</button>
+							<button class="btn btn-warning" (click)="edit(poll)">Edit</button>
+							<button class="btn btn-danger" (click)="remove(poll)">Remove</button>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button class="btn btn-success" (click)="create()">Create New Poll</button>
+		</div>
+	</div>
+</div>
